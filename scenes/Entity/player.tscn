@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://pvyka1vlyv1x" path="res://scripts/core/player.gd" id="1_1twvp"]
 [ext_resource type="Script" uid="uid://d1p3opba6nusd" path="res://scripts/resources/player_stat.gd" id="2_1526f"]
-[ext_resource type="Script" uid="uid://lot1guatr8lq" path="res://scripts/reuseable/state_machine/state_machine.gd" id="5_state_machine"]
-[ext_resource type="Texture2D" uid="uid://bg24kydisgi3q" path="res://assets/Free Retro Tiny Farm Kit/2 Standart/1 Character/D_Idle.png" id="6_j7lx8"]
-[ext_resource type="Script" uid="uid://dfohsd1m8d4fh" path="res://scripts/core/player_states/player_idle_state.gd" id="6_player_idle_state"]
-[ext_resource type="Script" uid="uid://dh7fwfqprxa6o" path="res://scripts/core/player_states/player_move_state.gd" id="7_player_move_state"]
-[ext_resource type="Texture2D" uid="uid://lkg86x5e3pep" path="res://assets/Free Retro Tiny Farm Kit/2 Standart/1 Character/D_Run.png" id="7_uqdsx"]
+[ext_resource type="PackedScene" uid="uid://h4obahruvheu" path="res://scenes/components/animation_component.tscn" id="5_8houc"]
+[ext_resource type="Script" uid="uid://b7ippjcu85pij" path="res://scripts/component/player_input_component.gd" id="6_input_component"]
+[ext_resource type="Script" uid="uid://pp8p6wghy1jp" path="res://scripts/component/player_movement_component.gd" id="8_movement_component"]
+[ext_resource type="Script" path="res://scripts/component/player_pickup_component.gd" id="9_pickup_component"]
+[ext_resource type="Script" path="res://scripts/component/inventory_component.gd" id="10_inventory_component"]
 
 [sub_resource type="Resource" id="Resource_yotw1"]
 script = ExtResource("2_1526f")
@@ -14,81 +14,43 @@ name = "Bob"
 speed = 100.0
 metadata/_custom_type_script = "uid://d1p3opba6nusd"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfvet"]
-atlas = ExtResource("6_j7lx8")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wh2c"]
-atlas = ExtResource("6_j7lx8")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_blasu"]
-atlas = ExtResource("7_uqdsx")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pt3ii"]
-atlas = ExtResource("7_uqdsx")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_as8na"]
-atlas = ExtResource("7_uqdsx")
-region = Rect2(48, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8cpfq"]
-atlas = ExtResource("7_uqdsx")
-region = Rect2(72, 0, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_lfvet"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lfvet")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3wh2c")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_blasu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pt3ii")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_as8na")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8cpfq")
-}],
-"loop": true,
-"name": &"move",
-"speed": 4.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00kv7"]
 size = Vector2(8, 7)
 
-[node name="Player" type="CharacterBody2D" unique_id=1016145422]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pickup_radius"]
+radius = 14.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1016145422 node_paths=PackedStringArray("input_component", "movement_component", "animation_component", "pickup_component", "inventory_component")]
 script = ExtResource("1_1twvp")
 stats = SubResource("Resource_yotw1")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+pickup_component = NodePath("PickupComponent")
+inventory_component = NodePath("InventoryComponent")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1819018627]
-script = ExtResource("5_state_machine")
+[node name="InputComponent" type="Node" parent="." unique_id=116304001]
+script = ExtResource("6_input_component")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1620734531]
-script = ExtResource("6_player_idle_state")
+[node name="MovementComponent" type="Node" parent="." unique_id=116304002]
+script = ExtResource("8_movement_component")
 
-[node name="Move" type="Node" parent="StateMachine" unique_id=552268050]
-script = ExtResource("7_player_move_state")
+[node name="AnimationComponent" parent="." unique_id=502317757 instance=ExtResource("5_8houc")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=962163698]
-sprite_frames = SubResource("SpriteFrames_lfvet")
-animation = &"move"
-frame_progress = 0.6033723
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("10_inventory_component")
+
+[node name="PickupComponent" type="Node" parent="." node_paths=PackedStringArray("pickup_area", "inventory_component")]
+script = ExtResource("9_pickup_component")
+pickup_area = NodePath("../PickupArea")
+inventory_component = NodePath("../InventoryComponent")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_pickup_radius")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2088491692]
 position = Vector2(0, 0.5)

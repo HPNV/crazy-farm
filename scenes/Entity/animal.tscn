@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/core/animal.gd" id="1_animal"]
+[ext_resource type="Script" path="res://scripts/resources/animal_stat.gd" id="2_animal_stat"]
+[ext_resource type="Script" path="res://scripts/component/actor_movement_component.gd" id="3_movement"]
+[ext_resource type="PackedScene" uid="uid://h4obahruvheu" path="res://scenes/components/animation_component.tscn" id="3_animation"]
+[ext_resource type="Script" path="res://scripts/component/wander_component.gd" id="4_wander"]
+[ext_resource type="Script" path="res://scripts/component/producer_component.gd" id="5_producer"]
+[ext_resource type="Script" path="res://scripts/component/drop_spawner_component.gd" id="6_drop_spawner"]
+[ext_resource type="PackedScene" path="res://scenes/Entity/dropped_item.tscn" id="7_dropped_item"]
+
+[sub_resource type="Resource" id="Resource_animal_stat"]
+script = ExtResource("2_animal_stat")
+name = "Chicken"
+speed = 32.0
+drop_time = 6.0
+drop_amount = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_animal"]
+radius = 7.0
+
+[node name="Animal" type="CharacterBody2D"]
+script = ExtResource("1_animal")
+stats = SubResource("Resource_animal_stat")
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("3_movement")
+
+[node name="AnimationComponent" parent="." instance=ExtResource("3_animation")]
+
+[node name="WanderComponent" type="Node" parent="."]
+script = ExtResource("4_wander")
+
+[node name="Timer" type="Timer" parent="WanderComponent"]
+autostart = false
+
+[node name="ProducerComponent" type="Node" parent="."]
+script = ExtResource("5_producer")
+
+[node name="Timer" type="Timer" parent="ProducerComponent"]
+autostart = false
+
+[node name="DropSpawnerComponent" type="Node" parent="."]
+script = ExtResource("6_drop_spawner")
+dropped_item_scene = ExtResource("7_dropped_item")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_animal")
+
+[connection signal="timeout" from="WanderComponent/Timer" to="WanderComponent" method="_on_timer_timeout"]
+[connection signal="timeout" from="ProducerComponent/Timer" to="ProducerComponent" method="_on_timer_timeout"]
+[connection signal="produced" from="ProducerComponent" to="." method="_on_producer_component_produced"]

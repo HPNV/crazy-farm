@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="AnimalStat" format=3 uid="uid://cm5ubekwf77mb"]
+
+[ext_resource type="Script" uid="uid://mj8bkfjl6odn" path="res://scripts/resources/animal_stat.gd" id="1_stat_script"]
+[ext_resource type="Texture2D" uid="uid://ce7tpso7d6ygn" path="res://assets/Free Retro Tiny Farm Kit/2 Standart/2 Animals/Chicken_idle.png" id="2_idle_tex"]
+[ext_resource type="Texture2D" uid="uid://b18sqsmtq5gab" path="res://assets/Free Retro Tiny Farm Kit/2 Standart/2 Animals/Chicken_run.png" id="3_move_tex"]
+[ext_resource type="Texture2D" uid="uid://d0sditgq7uwqb" path="res://assets/Free Retro Tiny Farm Kit/2 Standart/4 GUI/IconSet.png" id="3_oowuh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8l17"]
+atlas = ExtResource("3_oowuh")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chicken_idle_0"]
+atlas = ExtResource("2_idle_tex")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chicken_idle_1"]
+atlas = ExtResource("2_idle_tex")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chicken_move_0"]
+atlas = ExtResource("3_move_tex")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chicken_move_1"]
+atlas = ExtResource("3_move_tex")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_chicken"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8l17")
+}],
+"loop": true,
+"name": &"egg",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chicken_idle_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chicken_idle_1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chicken_move_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chicken_move_1")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
+}]
+
+[resource]
+script = ExtResource("1_stat_script")
+name = "Chicken"
+item_name = "Egg"
+speed = 34.0
+drop_time = 5.0
+price = 15
+sell_price = 8
+sprite_frames = SubResource("SpriteFrames_chicken")
+default_facing_left = true

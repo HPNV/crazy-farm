@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="PlantStat" format=3 uid="uid://b5toqdilepll"]
+
+[ext_resource type="Script" uid="uid://bb1n6qtjt8y7" path="res://scripts/resources/plant_stat.gd" id="1_stat_script"]
+[ext_resource type="Texture2D" uid="uid://bgqrl45wcy6mj" path="res://assets/Free Retro Tiny Farm Kit/2 Standart/5 Tiles/TileSet.png" id="2_tiles_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igc3n"]
+atlas = ExtResource("2_tiles_tex")
+region = Rect2(56, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd3y6"]
+atlas = ExtResource("2_tiles_tex")
+region = Rect2(56, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u736k"]
+atlas = ExtResource("2_tiles_tex")
+region = Rect2(64, 24, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wheat"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igc3n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd3y6")
+}],
+"loop": true,
+"name": &"move",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u736k")
+}],
+"loop": true,
+"name": &"wheat",
+"speed": 1.0
+}]
+
+[resource]
+script = ExtResource("1_stat_script")
+name = "Wheat"
+item_name = "Wheat"
+drop_time = 6.0
+price = 12
+sell_price = 6
+sprite_frames = SubResource("SpriteFrames_wheat")

@@ -3,28 +3,34 @@ class_name Player
 
 @export var stats: PlayerStat
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var state_machine = $StateMachine
+@export var input_component: PlayerInputComponent
+@export var movement_component: PlayerMovementComponent
+@export var animation_component: FarmActorAnimationComponent
+@export var pickup_component: PlayerPickupComponent
 
 func _ready() -> void:
-	state_machine.start(self)
+	if movement_component != null:
+		movement_component.setup(self, stats.speed)
 
-func get_move_input() -> Vector2:
-	var action_input := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if action_input != Vector2.ZERO:
-		return action_input
+	if animation_component != null:
+		animation_component.apply_stats(stats)
 
-	var x := int(Input.is_physical_key_pressed(Key.KEY_D)) - int(Input.is_physical_key_pressed(Key.KEY_A))
-	var y := int(Input.is_physical_key_pressed(Key.KEY_S)) - int(Input.is_physical_key_pressed(Key.KEY_W))
-	return Vector2(x, y).normalized()
+	animation_component.play_animation("idle")
 
-func get_move_speed() -> float:
-	return stats.speed if stats != null else 0.0
 
-func move(direction: Vector2) -> void:
-	velocity = direction * get_move_speed()
-	move_and_slide()
+func _physics_process(_delta: float) -> void:
+	if input_component != null and input_component.is_interact_just_pressed() and pickup_component != null:
+		pickup_component.try_pickup()
 
-func stop() -> void:
-	velocity = Vector2.ZERO
-	move_and_slide()
+	var input_vector = input_component.get_move_input()
+	if input_vector == Vector2.ZERO:
+		movement_component.stop()
+		animation_component.play_animation("idle")
+		return
+
+	movement_component.move(input_vector)
+	animation_component.play_animation("move")
+	animation_component.face_direction_x(input_vector.x)
+
+func _on_inventory_item_added(item_name: String, amount: int, total: int) -> void:
+	print("Picked %d %s (total: %d)" % [amount, item_name, total])

@@ -1,9 +1,38 @@
 [gd_scene format=3 uid="uid://dq7mdrsxs23cu"]
 
+[ext_resource type="Script" uid="uid://0d5te1cckjhb" path="res://scripts/core/plant.gd" id="1_plant"]
+[ext_resource type="Script" uid="uid://bb1n6qtjt8y7" path="res://scripts/resources/plant_stat.gd" id="2_plant_stat"]
+[ext_resource type="PackedScene" uid="uid://h4obahruvheu" path="res://scenes/components/animation_component.tscn" id="3_7kkeh"]
+[ext_resource type="Script" uid="uid://crklflffp66yq" path="res://scripts/component/producer_component.gd" id="3_producer"]
+[ext_resource type="Script" path="res://scripts/component/drop_spawner_component.gd" id="4_drop_spawner"]
+[ext_resource type="PackedScene" path="res://scenes/Entity/dropped_item.tscn" id="5_dropped_item"]
+
+[sub_resource type="Resource" id="Resource_plant_stat"]
+script = ExtResource("2_plant_stat")
+name = "Tomato Plant"
+item_name = "tomato"
+drop_time = 4.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ev62r"]
 radius = 7.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1437286192]
+[node name="Plant" type="CharacterBody2D" unique_id=1437286192]
+script = ExtResource("1_plant")
+stats = SubResource("Resource_plant_stat")
+
+[node name="AnimationComponent" parent="." unique_id=502317757 instance=ExtResource("3_7kkeh")]
+
+[node name="ProducerComponent" type="Node" parent="." unique_id=781159201]
+script = ExtResource("3_producer")
+
+[node name="Timer" type="Timer" parent="ProducerComponent" unique_id=178214532]
+
+[node name="DropSpawnerComponent" type="Node" parent="."]
+script = ExtResource("4_drop_spawner")
+dropped_item_scene = ExtResource("5_dropped_item")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1454134762]
 shape = SubResource("CircleShape2D_ev62r")
+
+[connection signal="produced" from="ProducerComponent" to="." method="_on_producer_component_produced"]
+[connection signal="timeout" from="ProducerComponent/Timer" to="ProducerComponent" method="_on_timer_timeout"]
