@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cwlhax1xr7evk"]
+
+[ext_resource type="Script" uid="uid://dauhev0o2ldpb" path="res://scripts/component/shop_offer_component.gd" id="1_shop_offer_script"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wpp71"]
+line_spacing = -2.0
+font_size = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_offer"]
+size = Vector2(16, 16)
+
+[node name="ShopOffer" type="Node2D" unique_id=1617183519 node_paths=PackedStringArray("sprite", "info_label")]
+script = ExtResource("1_shop_offer_script")
+sprite = NodePath("Sprite2D")
+info_label = NodePath("Label")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=86446689]
+
+[node name="Label" type="Label" parent="." unique_id=2123642412]
+offset_left = -18.0
+offset_top = 7.0
+offset_right = 18.0
+offset_bottom = 15.0
+text = "Offer
+$0"
+label_settings = SubResource("LabelSettings_wpp71")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=817904928]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1753190299]
+shape = SubResource("RectangleShape2D_offer")

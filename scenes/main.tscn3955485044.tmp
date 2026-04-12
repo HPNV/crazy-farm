@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://h12aowo75phq" path="res://resource/animals/cow_stat.tres" id="5_cow_stat"]
 [ext_resource type="Resource" uid="uid://b5toqdilepll" path="res://resource/plants/wheat_stat.tres" id="6_wheat_stat"]
 [ext_resource type="Script" uid="uid://d0ung45p716ur" path="res://scripts/component/shop_component.gd" id="7_shop_component"]
-[ext_resource type="PackedScene" uid="uid://cwlhax1xr7evk" path="res://scenes/components/shop_offer_component.tscn" id="8_shop_offer_scene"]
+[ext_resource type="PackedScene" path="res://scenes/components/shop_offer_component.tscn" id="8_shop_offer_scene"]
 
 [node name="Main" type="Node2D" unique_id=362047072]
 
@@ -26,27 +26,8 @@ tile_set = ExtResource("1_0wfyh")
 tile_map_data = PackedByteArray("AAAOAAAAAQAEAAUAAAAOAAEAAQAEAAcAAAAOAAIAAQAEAAcAAAAPAAAAAQAFAAUAAAAPAAEAAQAIAAcAAAAPAAIAAQAIAAcAAAAQAAAAAQAFAAUAAAAQAAEAAQAIAAcAAAAQAAIAAQAFAAcAAAARAAAAAQAFAAUAAAARAAEAAQAIAAcAAAARAAIAAQAGAAcAAAASAAAAAQAEAAQAAAASAAEAAQAIAAcAAAASAAIAAQAHAAcAAAATAAAAAQAEAAQAAAATAAEAAQAIAAcAAAATAAIAAQAHAAcAAAAUAAAAAQAFAAUAAAAUAAEAAQAIAAcAAAAUAAIAAQAGAAcAAAAVAAAAAQAFAAUAAAAVAAEAAQAIAAcAAAAVAAIAAQAIAAcAAAAWAAAAAQAFAAUAAAAWAAEAAQAIAAcAAAAWAAIAAQAIAAcAAAAXAAAAAQAFAAQAAAAXAAEAAQAJAAcAAAAXAAIAAQAJAAcAAAA=")
 tile_set = ExtResource("1_0wfyh")
 
-[node name="ShopOfferSlots" type="Node2D" parent="." unique_id=686587160]
-position = Vector2(22.915, 17.065)
-
-[node name="Slot01" type="Marker2D" parent="ShopOfferSlots" unique_id=1264931238]
-position = Vector2(96, 16)
-
-[node name="Slot02" type="Marker2D" parent="ShopOfferSlots" unique_id=1735346423]
-position = Vector2(112, 16)
-
-[node name="Slot03" type="Marker2D" parent="ShopOfferSlots" unique_id=362288906]
-position = Vector2(128, 16)
-
-[node name="Slot04" type="Marker2D" parent="ShopOfferSlots" unique_id=1916499882]
-position = Vector2(144, 16)
-
-[node name="Slot05" type="Marker2D" parent="ShopOfferSlots" unique_id=689811025]
-position = Vector2(160, 16)
-
-[node name="ShopComponent" type="Node2D" parent="." unique_id=810737250 node_paths=PackedStringArray("offer_slot_root")]
+[node name="ShopComponent" type="Node2D" parent="." unique_id=1585239894]
 script = ExtResource("7_shop_component")
-offer_slot_root = NodePath("../ShopOfferSlots")
 offer_scene = ExtResource("8_shop_offer_scene")
 plant_scene = ExtResource("2_plant")
 animal_scene = ExtResource("2_animal")

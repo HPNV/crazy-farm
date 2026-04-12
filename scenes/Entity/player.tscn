@@ -7,11 +7,14 @@
 [ext_resource type="Script" uid="uid://pp8p6wghy1jp" path="res://scripts/component/player_movement_component.gd" id="8_movement_component"]
 [ext_resource type="Script" path="res://scripts/component/player_pickup_component.gd" id="9_pickup_component"]
 [ext_resource type="Script" path="res://scripts/component/inventory_component.gd" id="10_inventory_component"]
+[ext_resource type="Script" path="res://scripts/component/player_shop_interaction_component.gd" id="11_shop_interaction_component"]
+[ext_resource type="Script" path="res://scripts/component/player_placement_component.gd" id="12_placement_component"]
 
 [sub_resource type="Resource" id="Resource_yotw1"]
 script = ExtResource("2_1526f")
 name = "Bob"
 speed = 100.0
+balance = 120.0
 metadata/_custom_type_script = "uid://d1p3opba6nusd"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00kv7"]
@@ -20,7 +23,7 @@ size = Vector2(8, 7)
 [sub_resource type="CircleShape2D" id="CircleShape2D_pickup_radius"]
 radius = 14.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1016145422 node_paths=PackedStringArray("input_component", "movement_component", "animation_component", "pickup_component", "inventory_component")]
+[node name="Player" type="CharacterBody2D" unique_id=1016145422 node_paths=PackedStringArray("input_component", "movement_component", "animation_component", "pickup_component", "inventory_component", "shop_interaction_component", "placement_component")]
 script = ExtResource("1_1twvp")
 stats = SubResource("Resource_yotw1")
 input_component = NodePath("InputComponent")
@@ -28,6 +31,8 @@ movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
 pickup_component = NodePath("PickupComponent")
 inventory_component = NodePath("InventoryComponent")
+shop_interaction_component = NodePath("ShopInteractionComponent")
+placement_component = NodePath("PlacementComponent")
 
 [node name="InputComponent" type="Node" parent="." unique_id=116304001]
 script = ExtResource("6_input_component")
@@ -44,6 +49,12 @@ script = ExtResource("10_inventory_component")
 script = ExtResource("9_pickup_component")
 pickup_area = NodePath("../PickupArea")
 inventory_component = NodePath("../InventoryComponent")
+
+[node name="ShopInteractionComponent" type="Node" parent="."]
+script = ExtResource("11_shop_interaction_component")
+
+[node name="PlacementComponent" type="Node" parent="."]
+script = ExtResource("12_placement_component")
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 2
