@@ -9,6 +9,8 @@ class_name Animal
 @onready var animation_component := $AnimationComponent as FarmActorAnimationComponent
 @onready var drop_spawner_component: DropSpawnerComponent = $DropSpawnerComponent
 
+const ITEM_STAT_SCRIPT = preload("res://scripts/resources/item_stat.gd")
+
 func _ready() -> void:
 	if stats != null:
 		if movement_component != null:
@@ -40,7 +42,14 @@ func _on_producer_component_produced(item_name: String, amount: int, _total_prod
 	if drop_spawner_component == null:
 		return
 
-	drop_spawner_component.spawn_drop(item_name, amount, _get_drop_texture(item_name), global_position)
+	drop_spawner_component.spawn_drop(_build_item_stat(item_name), amount, global_position)
+
+func _build_item_stat(item_name: String) -> Resource:
+	var item_stat = ITEM_STAT_SCRIPT.new()
+	item_stat.item_name = item_name
+	item_stat.sell_price = stats.sell_price if stats != null else 0
+	item_stat.texture = _get_drop_texture(item_name)
+	return item_stat
 
 func _get_drop_texture(item_name: String) -> Texture2D:
 	if stats != null and stats.sprite_frames != null:

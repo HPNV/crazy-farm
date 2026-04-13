@@ -9,12 +9,13 @@ signal selected_placeable_changed(slot_index: int, item_id: String)
 
 var _items: Dictionary = {}
 var _item_textures: Dictionary = {}
+var _item_sell_prices: Dictionary = {}
 var _item_order: Array[String] = []
 var _placeables: Dictionary = {}
 var _placeable_order: Array[String] = []
 var _selected_hotbar_index: int = 0
 
-func add_item(item_name: String, amount: int, texture: Texture2D = null) -> void:
+func add_item(item_name: String, amount: int, texture: Texture2D = null, sell_price: int = 0) -> void:
 	if item_name.is_empty() or amount <= 0:
 		return
 
@@ -25,6 +26,9 @@ func add_item(item_name: String, amount: int, texture: Texture2D = null) -> void
 
 	if texture != null:
 		_item_textures[item_name] = texture
+
+	if sell_price > 0:
+		_item_sell_prices[item_name] = sell_price
 
 	item_added.emit(item_name, amount, new_total)
 	if get_selected_hotbar_entry().is_empty():
@@ -43,6 +47,7 @@ func consume_item(item_name: String, amount: int = 1) -> bool:
 	if new_total <= 0:
 		_items.erase(item_name)
 		_item_textures.erase(item_name)
+		_item_sell_prices.erase(item_name)
 		_item_order.erase(item_name)
 	else:
 		_items[item_name] = new_total
@@ -147,7 +152,8 @@ func get_hotbar_entry_by_index(index: int) -> Dictionary:
 		"item_name": item_name,
 		"display_name": item_name,
 		"amount": count,
-		"texture": _item_textures.get(item_name) as Texture2D
+		"texture": _item_textures.get(item_name) as Texture2D,
+		"sell_price": int(_item_sell_prices.get(item_name, 0))
 	}
 
 func get_selected_hotbar_entry() -> Dictionary:

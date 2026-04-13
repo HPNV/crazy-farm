@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dq7mdrsxs23cu" path="res://scenes/Entity/plant.tscn" id="2_plant"]
 [ext_resource type="Script" uid="uid://d0ung45p716ur" path="res://scripts/component/shop_component.gd" id="7_shop_component"]
 [ext_resource type="PackedScene" uid="uid://cwlhax1xr7evk" path="res://scenes/components/shop_offer_component.tscn" id="8_shop_offer_scene"]
+[ext_resource type="Script" path="res://scripts/component/market_auto_sell_component.gd" id="9_market_auto_sell"]
 
 [node name="Main" type="Node2D" unique_id=362047072]
 
@@ -54,3 +55,8 @@ animal_scene = ExtResource("2_animal")
 
 [node name="Player" parent="." unique_id=1016145422 instance=ExtResource("1_o5qli")]
 position = Vector2(23, 23)
+
+[node name="MarketAutoSellComponent" type="Node" parent="." node_paths=PackedStringArray("market_tilemap", "player")]
+script = ExtResource("9_market_auto_sell")
+market_tilemap = NodePath("../Tilemap/Market")
+player = NodePath("../Player")

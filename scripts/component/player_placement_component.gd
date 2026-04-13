@@ -25,15 +25,15 @@ func _exit_tree() -> void:
 	if _preview_root != null:
 		_preview_root.queue_free()
 
-func try_place_from_inventory(inventory_component: InventoryComponent) -> bool:
-	if inventory_component == null:
+func try_place_from_inventory(source_inventory: InventoryComponent) -> bool:
+	if source_inventory == null:
 		return false
 
-	var item_id = inventory_component.get_selected_placeable_id()
+	var item_id = source_inventory.get_selected_placeable_id()
 	if item_id.is_empty():
 		return false
 
-	var entry = inventory_component.get_placeable_entry(item_id)
+	var entry = source_inventory.get_placeable_entry(item_id)
 	if entry.is_empty():
 		return false
 
@@ -63,7 +63,7 @@ func try_place_from_inventory(inventory_component: InventoryComponent) -> bool:
 		return false
 
 	root.add_child(instance)
-	if not inventory_component.consume_placeable(item_id, 1):
+	if not source_inventory.consume_placeable(item_id, 1):
 		instance.queue_free()
 		return false
 

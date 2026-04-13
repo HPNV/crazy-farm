@@ -10,8 +10,8 @@ class_name Player
 @export var inventory_component: InventoryComponent
 @export var shop_interaction_component: PlayerShopInteractionComponent
 @export var placement_component: PlayerPlacementComponent
-@export var hotbar_component: InventoryHotbarComponent
-@export var throw_component: PlayerThrowComponent
+@export var hotbar_component: Node
+@export var throw_component: Node
 
 var _last_facing_x: float = 1.0
 

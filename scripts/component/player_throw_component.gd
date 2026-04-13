@@ -5,6 +5,8 @@ class_name PlayerThrowComponent
 @export var throw_forward_distance: float = 16.0
 @export var throw_vertical_impulse: float = -4.0
 
+const ITEM_STAT_SCRIPT = preload("res://scripts/resources/item_stat.gd")
+
 func try_throw_selected(inventory_component: InventoryComponent, origin: Vector2, facing_sign_x: float) -> bool:
 	if inventory_component == null or dropped_item_scene == null:
 		return false
@@ -34,7 +36,11 @@ func try_throw_selected(inventory_component: InventoryComponent, origin: Vector2
 		return false
 
 	root.add_child(drop_instance)
-	drop_instance.setup(item_name, 1, selected_entry.get("texture") as Texture2D)
+	var item_stat = ITEM_STAT_SCRIPT.new()
+	item_stat.item_name = item_name
+	item_stat.texture = selected_entry.get("texture") as Texture2D
+	item_stat.sell_price = int(selected_entry.get("sell_price", 0))
+	drop_instance.setup_from_item_stat(item_stat, 1)
 
 	var direction = signf(facing_sign_x)
 	if direction == 0.0:

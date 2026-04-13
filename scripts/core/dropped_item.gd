@@ -8,13 +8,33 @@ signal picked(item_name: String, amount: int)
 
 var item_name: String = "Item"
 var amount: int = 1
+var sell_price: int = 0
+var item_stat: Resource
 var _is_pickable: bool = false
 
-func setup(new_item_name: String, new_amount: int, texture: Texture2D) -> void:
+func _ready() -> void:
+	add_to_group("dropped_items")
+
+func setup(new_item_name: String, new_amount: int, texture: Texture2D, new_sell_price: int = 0) -> void:
 	item_name = new_item_name
 	amount = max(new_amount, 1)
+	sell_price = max(new_sell_price, 0)
+	item_stat = null
 	if sprite != null:
 		sprite.texture = texture
+
+func setup_from_item_stat(new_item_stat: Resource, new_amount: int) -> void:
+	if new_item_stat == null:
+		setup("Item", new_amount, null, 0)
+		return
+
+	item_stat = new_item_stat
+	setup(
+		String(new_item_stat.get("item_name")),
+		new_amount,
+		new_item_stat.get("texture") as Texture2D,
+		int(new_item_stat.get("sell_price"))
+	)
 
 func launch(origin: Vector2, impulse: Vector2) -> void:
 	global_position = origin
@@ -48,6 +68,12 @@ func get_texture() -> Texture2D:
 		return null
 
 	return sprite.texture
+
+func get_sell_price() -> int:
+	if item_stat != null:
+		return max(int(item_stat.get("sell_price")), 0)
+
+	return max(sell_price, 0)
 
 func _on_landed() -> void:
 	_is_pickable = true
