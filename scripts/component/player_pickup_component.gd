@@ -10,7 +10,7 @@ func try_pickup() -> bool:
 		return false
 
 	if inventory_component != null:
-		inventory_component.add_item(target.item_name, target.amount)
+		inventory_component.add_item(target.item_name, target.amount, target.get_texture())
 
 	return target.pickup()
 

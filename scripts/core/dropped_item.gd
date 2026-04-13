@@ -43,6 +43,12 @@ func pickup() -> bool:
 func is_pickable() -> bool:
 	return _is_pickable
 
+func get_texture() -> Texture2D:
+	if sprite == null:
+		return null
+
+	return sprite.texture
+
 func _on_landed() -> void:
 	_is_pickable = true
 	if pickup_area != null:

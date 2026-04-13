@@ -1,0 +1,398 @@
+[gd_scene format=3 uid="uid://cawt1mblxmjm2"]
+
+[ext_resource type="Script" uid="uid://boug6rqwj7l37" path="res://scripts/component/inventory_hotbar_component.gd" id="1_hotbar_script"]
+
+[node name="InventoryHotbarComponent" type="CanvasLayer" unique_id=1940359727]
+script = ExtResource("1_hotbar_script")
+
+[node name="HotbarRoot" type="MarginContainer" parent="." unique_id=1122439438]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -23.0
+offset_right = -6.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BarRow" type="HBoxContainer" parent="HotbarRoot" unique_id=306085278]
+layout_mode = 2
+size_flags_vertical = 10
+alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="HotbarRoot/BarRow" unique_id=724201347]
+custom_minimum_size = Vector2(178, 18)
+layout_mode = 2
+
+[node name="Slots" type="HBoxContainer" parent="HotbarRoot/BarRow/Panel" unique_id=189498496]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Slot01" type="PanelContainer" parent="HotbarRoot/BarRow/Panel/Slots" unique_id=1577348998]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="SlotMargin" type="MarginContainer" parent="HotbarRoot/BarRow/Panel/Slots/Slot01" unique_id=1685406273]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SlotContent" type="Control" parent="HotbarRoot/BarRow/Panel/Slots/Slot01/SlotMargin" unique_id=2124764303]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HotbarRoot/BarRow/Panel/Slots/Slot01/SlotMargin/SlotContent" unique_id=1689953441]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Count" type="Label" parent="HotbarRoot/BarRow/Panel/Slots/Slot01/SlotMargin/SlotContent" unique_id=1586639617]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -8.0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Slot02" type="PanelContainer" parent="HotbarRoot/BarRow/Panel/Slots" unique_id=326449153]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="SlotMargin" type="MarginContainer" parent="HotbarRoot/BarRow/Panel/Slots/Slot02" unique_id=2107294584]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SlotContent" type="Control" parent="HotbarRoot/BarRow/Panel/Slots/Slot02/SlotMargin" unique_id=1854045627]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HotbarRoot/BarRow/Panel/Slots/Slot02/SlotMargin/SlotContent" unique_id=1031520851]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Count" type="Label" parent="HotbarRoot/BarRow/Panel/Slots/Slot02/SlotMargin/SlotContent" unique_id=198591172]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -8.0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Slot03" type="PanelContainer" parent="HotbarRoot/BarRow/Panel/Slots" unique_id=1115275880]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="SlotMargin" type="MarginContainer" parent="HotbarRoot/BarRow/Panel/Slots/Slot03" unique_id=1400717600]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SlotContent" type="Control" parent="HotbarRoot/BarRow/Panel/Slots/Slot03/SlotMargin" unique_id=198236266]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HotbarRoot/BarRow/Panel/Slots/Slot03/SlotMargin/SlotContent" unique_id=184490091]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Count" type="Label" parent="HotbarRoot/BarRow/Panel/Slots/Slot03/SlotMargin/SlotContent" unique_id=947212237]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -8.0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Slot04" type="PanelContainer" parent="HotbarRoot/BarRow/Panel/Slots" unique_id=1059568138]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="SlotMargin" type="MarginContainer" parent="HotbarRoot/BarRow/Panel/Slots/Slot04" unique_id=1222831033]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SlotContent" type="Control" parent="HotbarRoot/BarRow/Panel/Slots/Slot04/SlotMargin" unique_id=1189286290]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HotbarRoot/BarRow/Panel/Slots/Slot04/SlotMargin/SlotContent" unique_id=1854420612]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Count" type="Label" parent="HotbarRoot/BarRow/Panel/Slots/Slot04/SlotMargin/SlotContent" unique_id=2098870122]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -8.0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Slot05" type="PanelContainer" parent="HotbarRoot/BarRow/Panel/Slots" unique_id=1064764008]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="SlotMargin" type="MarginContainer" parent="HotbarRoot/BarRow/Panel/Slots/Slot05" unique_id=1335732130]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SlotContent" type="Control" parent="HotbarRoot/BarRow/Panel/Slots/Slot05/SlotMargin" unique_id=328917262]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HotbarRoot/BarRow/Panel/Slots/Slot05/SlotMargin/SlotContent" unique_id=459830270]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Count" type="Label" parent="HotbarRoot/BarRow/Panel/Slots/Slot05/SlotMargin/SlotContent" unique_id=630706157]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -8.0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Slot06" type="PanelContainer" parent="HotbarRoot/BarRow/Panel/Slots" unique_id=777729210]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="SlotMargin" type="MarginContainer" parent="HotbarRoot/BarRow/Panel/Slots/Slot06" unique_id=2127800179]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SlotContent" type="Control" parent="HotbarRoot/BarRow/Panel/Slots/Slot06/SlotMargin" unique_id=1410300193]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HotbarRoot/BarRow/Panel/Slots/Slot06/SlotMargin/SlotContent" unique_id=1259065739]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Count" type="Label" parent="HotbarRoot/BarRow/Panel/Slots/Slot06/SlotMargin/SlotContent" unique_id=1585643188]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -8.0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Slot07" type="PanelContainer" parent="HotbarRoot/BarRow/Panel/Slots" unique_id=387487213]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="SlotMargin" type="MarginContainer" parent="HotbarRoot/BarRow/Panel/Slots/Slot07" unique_id=1373264328]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SlotContent" type="Control" parent="HotbarRoot/BarRow/Panel/Slots/Slot07/SlotMargin" unique_id=743123993]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HotbarRoot/BarRow/Panel/Slots/Slot07/SlotMargin/SlotContent" unique_id=632222536]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Count" type="Label" parent="HotbarRoot/BarRow/Panel/Slots/Slot07/SlotMargin/SlotContent" unique_id=1971446366]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -8.0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Slot08" type="PanelContainer" parent="HotbarRoot/BarRow/Panel/Slots" unique_id=1849928109]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="SlotMargin" type="MarginContainer" parent="HotbarRoot/BarRow/Panel/Slots/Slot08" unique_id=687410903]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SlotContent" type="Control" parent="HotbarRoot/BarRow/Panel/Slots/Slot08/SlotMargin" unique_id=1959439009]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HotbarRoot/BarRow/Panel/Slots/Slot08/SlotMargin/SlotContent" unique_id=552165084]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Count" type="Label" parent="HotbarRoot/BarRow/Panel/Slots/Slot08/SlotMargin/SlotContent" unique_id=1516638331]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -8.0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Slot09" type="PanelContainer" parent="HotbarRoot/BarRow/Panel/Slots" unique_id=1697358269]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+
+[node name="SlotMargin" type="MarginContainer" parent="HotbarRoot/BarRow/Panel/Slots/Slot09" unique_id=159596044]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="SlotContent" type="Control" parent="HotbarRoot/BarRow/Panel/Slots/Slot09/SlotMargin" unique_id=1438952097]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="HotbarRoot/BarRow/Panel/Slots/Slot09/SlotMargin/SlotContent" unique_id=1119681777]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Count" type="Label" parent="HotbarRoot/BarRow/Panel/Slots/Slot09/SlotMargin/SlotContent" unique_id=1253461168]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -8.0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="SelectedItemLabel" type="Label" parent="HotbarRoot" unique_id=1392557947]
+visible = false
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 2
+clip_text = true

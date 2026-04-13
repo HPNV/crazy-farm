@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://scripts/component/inventory_component.gd" id="10_inventory_component"]
 [ext_resource type="Script" path="res://scripts/component/player_shop_interaction_component.gd" id="11_shop_interaction_component"]
 [ext_resource type="Script" path="res://scripts/component/player_placement_component.gd" id="12_placement_component"]
+[ext_resource type="PackedScene" path="res://scenes/components/inventory_hotbar_component.tscn" id="13_hotbar_component"]
+[ext_resource type="Script" path="res://scripts/component/player_throw_component.gd" id="14_throw_component"]
+[ext_resource type="PackedScene" path="res://scenes/Entity/dropped_item.tscn" id="15_dropped_item_scene"]
 
 [sub_resource type="Resource" id="Resource_yotw1"]
 script = ExtResource("2_1526f")
@@ -23,7 +26,7 @@ size = Vector2(8, 7)
 [sub_resource type="CircleShape2D" id="CircleShape2D_pickup_radius"]
 radius = 14.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1016145422 node_paths=PackedStringArray("input_component", "movement_component", "animation_component", "pickup_component", "inventory_component", "shop_interaction_component", "placement_component")]
+[node name="Player" type="CharacterBody2D" unique_id=1016145422 node_paths=PackedStringArray("input_component", "movement_component", "animation_component", "pickup_component", "inventory_component", "shop_interaction_component", "placement_component", "hotbar_component", "throw_component")]
 script = ExtResource("1_1twvp")
 stats = SubResource("Resource_yotw1")
 input_component = NodePath("InputComponent")
@@ -33,6 +36,8 @@ pickup_component = NodePath("PickupComponent")
 inventory_component = NodePath("InventoryComponent")
 shop_interaction_component = NodePath("ShopInteractionComponent")
 placement_component = NodePath("PlacementComponent")
+hotbar_component = NodePath("InventoryHotbarComponent")
+throw_component = NodePath("ThrowComponent")
 
 [node name="InputComponent" type="Node" parent="." unique_id=116304001]
 script = ExtResource("6_input_component")
@@ -55,6 +60,12 @@ script = ExtResource("11_shop_interaction_component")
 
 [node name="PlacementComponent" type="Node" parent="."]
 script = ExtResource("12_placement_component")
+
+[node name="ThrowComponent" type="Node" parent="."]
+script = ExtResource("14_throw_component")
+dropped_item_scene = ExtResource("15_dropped_item_scene")
+
+[node name="InventoryHotbarComponent" parent="." instance=ExtResource("13_hotbar_component")]
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 2
