@@ -4,9 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://c50lpbyf8cfke" path="res://scenes/Entity/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" path="res://scenes/Entity/animal.tscn" id="2_animal"]
 [ext_resource type="PackedScene" uid="uid://dq7mdrsxs23cu" path="res://scenes/Entity/plant.tscn" id="2_plant"]
-[ext_resource type="Resource" uid="uid://cm5ubekwf77mb" path="res://resource/animals/chicken_stat.tres" id="3_chicken_stat"]
-[ext_resource type="Resource" uid="uid://h12aowo75phq" path="res://resource/animals/cow_stat.tres" id="5_cow_stat"]
-[ext_resource type="Resource" uid="uid://b5toqdilepll" path="res://resource/plants/wheat_stat.tres" id="6_wheat_stat"]
 [ext_resource type="Script" uid="uid://d0ung45p716ur" path="res://scripts/component/shop_component.gd" id="7_shop_component"]
 [ext_resource type="PackedScene" uid="uid://cwlhax1xr7evk" path="res://scenes/components/shop_offer_component.tscn" id="8_shop_offer_scene"]
 
@@ -57,15 +54,3 @@ animal_scene = ExtResource("2_animal")
 
 [node name="Player" parent="." unique_id=1016145422 instance=ExtResource("1_o5qli")]
 position = Vector2(23, 23)
-
-[node name="Wheat" parent="." unique_id=514615263 instance=ExtResource("2_plant")]
-position = Vector2(72, 40)
-stats = ExtResource("6_wheat_stat")
-
-[node name="Chicken" parent="." unique_id=1179519783 instance=ExtResource("2_animal")]
-position = Vector2(90, 60)
-stats = ExtResource("3_chicken_stat")
-
-[node name="Cow" parent="." unique_id=1576527118 instance=ExtResource("2_animal")]
-position = Vector2(120, 65)
-stats = ExtResource("5_cow_stat")

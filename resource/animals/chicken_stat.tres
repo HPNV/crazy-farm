@@ -9,13 +9,13 @@
 atlas = ExtResource("3_oowuh")
 region = Rect2(16, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_chicken_idle_0"]
-atlas = ExtResource("2_idle_tex")
-region = Rect2(0, 0, 8, 8)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_chicken_idle_1"]
 atlas = ExtResource("2_idle_tex")
 region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chicken_idle_0"]
+atlas = ExtResource("2_idle_tex")
+region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chicken_move_0"]
 atlas = ExtResource("3_move_tex")
@@ -37,10 +37,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_chicken_idle_0")
+"texture": SubResource("AtlasTexture_chicken_idle_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_chicken_idle_1")
+"texture": SubResource("AtlasTexture_chicken_idle_0")
 }],
 "loop": true,
 "name": &"idle",
