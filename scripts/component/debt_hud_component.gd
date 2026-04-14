@@ -1,3 +1,4 @@
+@tool
 extends CanvasLayer
 class_name DebtHudComponent
 
@@ -15,13 +16,17 @@ var _player: Player
 func _ready() -> void:
 	_bind_ui_nodes()
 	_apply_layout()
-	_resolve_player()
-	_connect_signals()
-	_refresh()
 
 	var viewport_ref = get_viewport()
 	if viewport_ref != null and not viewport_ref.size_changed.is_connected(_on_viewport_size_changed):
 		viewport_ref.size_changed.connect(_on_viewport_size_changed)
+
+	if Engine.is_editor_hint():
+		return
+
+	_resolve_player()
+	_connect_signals()
+	_refresh()
 
 func _bind_ui_nodes() -> void:
 	_root_margin = get_node_or_null("Root") as MarginContainer

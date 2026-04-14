@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="AnimalStat" format=3 uid="uid://b0b10m82palsa"]
+
+[ext_resource type="Script" uid="uid://mj8bkfjl6odn" path="res://scripts/resources/animal_stat.gd" id="1_stat_script"]
+[ext_resource type="Texture2D" uid="uid://bb0srnlic2p7f" path="res://assets/Free Retro Tiny Farm Kit/2 Standart/2 Animals/Animals.png" id="2_k68ru"]
+[ext_resource type="Texture2D" uid="uid://d0sditgq7uwqb" path="res://assets/Free Retro Tiny Farm Kit/2 Standart/4 GUI/IconSet.png" id="3_icon_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0jgq"]
+atlas = ExtResource("2_k68ru")
+region = Rect2(0, 40, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6psp6"]
+atlas = ExtResource("2_k68ru")
+region = Rect2(0, 40, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkg4a"]
+atlas = ExtResource("2_k68ru")
+region = Rect2(16, 40, 16, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_truffle"]
+atlas = ExtResource("3_icon_tex")
+region = Rect2(24, 40, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0jgq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6psp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkg4a")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_truffle")
+}],
+"loop": true,
+"name": &"truffle",
+"speed": 1.0
+}]
+
+[resource]
+script = ExtResource("1_stat_script")
+name = "Pig"
+item_name = "Truffle"
+speed = 24.0
+drop_time = 9.0
+drop_amount = 2
+price = 56
+sell_price = 28
+synergy_tags = PackedStringArray("livestock", "pig")
+synergy_targets = PackedStringArray("sweet", "dairy")
+synergy_radius = 30.0
+synergy_speed_bonus_per_stack = 0.1
+sprite_frames = SubResource("SpriteFrames_pig")
+default_facing_left = true

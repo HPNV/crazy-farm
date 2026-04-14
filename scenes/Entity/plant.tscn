@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://crklflffp66yq" path="res://scripts/component/producer_component.gd" id="3_producer"]
 [ext_resource type="Script" path="res://scripts/component/drop_spawner_component.gd" id="4_drop_spawner"]
 [ext_resource type="PackedScene" path="res://scenes/Entity/dropped_item.tscn" id="5_dropped_item"]
+[ext_resource type="Script" path="res://scripts/component/producer_synergy_component.gd" id="6_synergy"]
 
 [sub_resource type="Resource" id="Resource_plant_stat"]
 script = ExtResource("2_plant_stat")
@@ -26,6 +27,9 @@ stats = SubResource("Resource_plant_stat")
 script = ExtResource("3_producer")
 
 [node name="Timer" type="Timer" parent="ProducerComponent" unique_id=178214532]
+
+[node name="ProducerSynergyComponent" type="Node" parent="."]
+script = ExtResource("6_synergy")
 
 [node name="DropSpawnerComponent" type="Node" parent="."]
 script = ExtResource("4_drop_spawner")

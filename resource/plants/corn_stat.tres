@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="PlantStat" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/plant_stat.gd" id="1_stat_script"]
+[ext_resource type="Texture2D" path="res://assets/Free Retro Tiny Farm Kit/2 Standart/5 Tiles/TileSet.png" id="2_tiles_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_corn_idle"]
+atlas = ExtResource("2_tiles_tex")
+region = Rect2(72, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_corn_move"]
+atlas = ExtResource("2_tiles_tex")
+region = Rect2(72, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_corn_drop"]
+atlas = ExtResource("2_tiles_tex")
+region = Rect2(80, 24, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_corn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_corn_idle")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_corn_move")
+}],
+"loop": true,
+"name": &"move",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_corn_drop")
+}],
+"loop": true,
+"name": &"corn",
+"speed": 1.0
+}]
+
+[resource]
+script = ExtResource("1_stat_script")
+name = "Corn"
+item_name = "Corn"
+drop_time = 5.0
+drop_amount = 1
+price = 20
+sell_price = 10
+synergy_tags = PackedStringArray("crop", "feed")
+synergy_targets = PackedStringArray("livestock")
+synergy_radius = 26.0
+synergy_max_stacks = 3
+synergy_drop_bonus_per_stack = 0.2
+synergy_speed_bonus_per_stack = 0.12
+sprite_frames = SubResource("SpriteFrames_corn")
