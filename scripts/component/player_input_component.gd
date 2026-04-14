@@ -44,6 +44,12 @@ func is_throw_just_pressed() -> bool:
 	_was_throw_pressed = is_pressed
 	return just_pressed
 
+func is_throw_pressed() -> bool:
+	if Input.is_action_pressed("throw_item"):
+		return true
+
+	return Input.is_physical_key_pressed(Key.KEY_Q)
+
 func consume_hotbar_scroll_steps() -> int:
 	var steps = _hotbar_scroll_steps
 	_hotbar_scroll_steps = 0

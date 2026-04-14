@@ -1,6 +1,7 @@
 extends Resource
 class_name PlayerStat
 
+signal balance_changed(balance: float)
 
 @export var name: String = "Dummy"
 @export var item_name: String = "item"
@@ -11,6 +12,8 @@ class_name PlayerStat
 
 func add_balance(amount: float) -> void:
 	balance += amount
+	balance_changed.emit(balance)
 
 func subtract_balance(amount: float) -> void:
 	balance -= amount
+	balance_changed.emit(balance)

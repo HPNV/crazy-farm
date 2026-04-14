@@ -3,6 +3,24 @@ class_name PlayerPickupComponent
 
 @export var pickup_area: Area2D
 @export var inventory_component: InventoryComponent
+@export var auto_pickup_enabled: bool = true
+@export var auto_pickup_interval: float = 0.08
+
+var _auto_pickup_cooldown: float = 0.0
+
+func _physics_process(delta: float) -> void:
+	if not auto_pickup_enabled:
+		return
+
+	if pickup_area == null or inventory_component == null:
+		return
+
+	_auto_pickup_cooldown -= delta
+	if _auto_pickup_cooldown > 0.0:
+		return
+
+	if try_pickup():
+		_auto_pickup_cooldown = max(auto_pickup_interval, 0.01)
 
 func try_pickup() -> bool:
 	var target = _find_nearest_pickable_drop()

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dtve3apo63o3"]
+
+[ext_resource type="Script" uid="uid://bam7pic5vqt5j" path="res://scripts/component/debt_hud_component.gd" id="1_debt_hud_script"]
+
+[node name="DebtHudComponent" type="CanvasLayer" unique_id=495511527]
+script = ExtResource("1_debt_hud_script")
+
+[node name="Root" type="MarginContainer" parent="." unique_id=1724010042]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -92.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 36.0
+grow_horizontal = 0
+
+[node name="Panel" type="PanelContainer" parent="Root" unique_id=891264692]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Root/Panel" unique_id=764973393]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 3
+
+[node name="Stack" type="VBoxContainer" parent="Root/Panel/Margin" unique_id=567025634]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="Root/Panel/Margin/Stack" unique_id=2109110028]
+layout_mode = 2
+text = "Debt"
+horizontal_alignment = 2
+
+[node name="DebtLabel" type="Label" parent="Root/Panel/Margin/Stack" unique_id=1531667349]
+layout_mode = 2
+text = "Pay: 0"
+horizontal_alignment = 2
+
+[node name="BalanceLabel" type="Label" parent="Root/Panel/Margin/Stack" unique_id=1687633720]
+layout_mode = 2
+text = "Own: 0"
+horizontal_alignment = 2

@@ -32,7 +32,7 @@ func _ready() -> void:
 		placement_component.inventory_component = inventory_component
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if input_component != null and inventory_component != null:
 		var requested_hotbar_slot = input_component.consume_requested_hotbar_slot()
 		if requested_hotbar_slot >= 0:
@@ -58,8 +58,14 @@ func _physics_process(_delta: float) -> void:
 	if input_component != null and input_component.consume_place_with_mouse_requested() and placement_component != null and inventory_component != null:
 		placement_component.try_place_from_inventory(inventory_component)
 
-	if input_component != null and input_component.is_throw_just_pressed() and throw_component != null and inventory_component != null:
-		throw_component.try_throw_selected(inventory_component, global_position + Vector2(_last_facing_x * 6.0, -2.0), _last_facing_x)
+	if input_component != null and throw_component != null and inventory_component != null:
+		throw_component.update_hold_throw(
+			delta,
+			input_component.is_throw_pressed(),
+			inventory_component,
+			global_position + Vector2(_last_facing_x * 6.0, -2.0),
+			_last_facing_x
+		)
 
 	if input_component == null or movement_component == null or animation_component == null:
 		return

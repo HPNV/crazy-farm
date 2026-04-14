@@ -4,8 +4,26 @@ class_name PlayerThrowComponent
 @export var dropped_item_scene: PackedScene
 @export var throw_forward_distance: float = 16.0
 @export var throw_vertical_impulse: float = -4.0
+@export var hold_throw_interval: float = 0.12
 
 const ITEM_STAT_SCRIPT = preload("res://scripts/resources/item_stat.gd")
+
+var _hold_throw_cooldown: float = 0.0
+
+func update_hold_throw(delta: float, throw_pressed: bool, inventory_component: InventoryComponent, origin: Vector2, facing_sign_x: float) -> void:
+	if not throw_pressed:
+		_hold_throw_cooldown = 0.0
+		return
+
+	_hold_throw_cooldown -= delta
+	if _hold_throw_cooldown > 0.0:
+		return
+
+	var did_throw = try_throw_selected(inventory_component, origin, facing_sign_x)
+	if did_throw:
+		_hold_throw_cooldown = max(hold_throw_interval, 0.01)
+	else:
+		_hold_throw_cooldown = max(hold_throw_interval * 0.5, 0.05)
 
 func try_throw_selected(inventory_component: InventoryComponent, origin: Vector2, facing_sign_x: float) -> bool:
 	if inventory_component == null or dropped_item_scene == null:

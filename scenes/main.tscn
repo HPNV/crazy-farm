@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d0ung45p716ur" path="res://scripts/component/shop_component.gd" id="7_shop_component"]
 [ext_resource type="PackedScene" uid="uid://cwlhax1xr7evk" path="res://scenes/components/shop_offer_component.tscn" id="8_shop_offer_scene"]
 [ext_resource type="Script" path="res://scripts/component/market_auto_sell_component.gd" id="9_market_auto_sell"]
+[ext_resource type="PackedScene" path="res://scenes/components/debt_hud_component.tscn" id="10_debt_hud"]
 
 [node name="Main" type="Node2D" unique_id=362047072]
 
@@ -60,3 +61,5 @@ position = Vector2(23, 23)
 script = ExtResource("9_market_auto_sell")
 market_tilemap = NodePath("../Tilemap/Market")
 player = NodePath("../Player")
+
+[node name="DebtHudComponent" parent="." instance=ExtResource("10_debt_hud")]
